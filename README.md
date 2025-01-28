@@ -10,3 +10,5 @@ Testando o uso de chamada de funções pelo LM Studio e script.
 - Execute qualquer um dos scripts abaixo terminados em .py
 
 Estou aprendendo como usar as funções, mas sem dúvida é uma ferramenta poderosa! acredito que com ela o LLM faça mais sentido, pois transforma um texto em argumentos de funções, além de avaliar qual função é a mais adequada para o texto.
+
+[Demo](wiki\media\demo.jpg)
