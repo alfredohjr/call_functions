@@ -3,26 +3,13 @@ from langchain_core.tools import tool
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain_openai.chat_models import ChatOpenAI
 
-from src.tools.the_wikipedia import the_wikipedia
-from src.tools.the_email_sender import send_email
-from src.tools.the_best_clients import the_best_clients
+from src.tools.the_imdb import the_get_columns, the_get_total_by_column, the_get_vote_average_by_column, the_get_a_random_movie
 
 MODEL = "qwen2.5-3b-instruct"
 HOST = "http://127.0.0.1:1234/v1"
 
-@tool
-def add(a: int, b: int) -> int:
-    """Adds a and b."""
-    return a + b
 
-
-@tool
-def multiply(a: int, b: int) -> int:
-    """Multiplies a and b."""
-    return a * b
-
-
-tools = [add, multiply, the_wikipedia, send_email, the_best_clients]
+tools = [the_get_columns, the_get_total_by_column, the_get_vote_average_by_column, the_get_a_random_movie]
 
 prompt_template = "{user_input} {agent_scratchpad}"
 prompt = PromptTemplate(
@@ -36,4 +23,4 @@ agent = create_tool_calling_agent(llm, tools, prompt)
 
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
-print(agent_executor.invoke({'user_input':"Procure os melhores clientes, para cada cliente pesquise uma fruta aleatoria na wikipedia e mande um email para ele explicando a vantagem dela."}))
+print(agent_executor.invoke({'user_input':"me de a sugestao de algum filme, pegue as informacoes e faça um resumo atrativo", 'agent_scratchpad':""}))
