@@ -1,3 +1,6 @@
 amb
+tmp
 
 *.pyc
+__pycache__
+
